@@ -1,0 +1,11 @@
+//we have to make the following requests 
+
+GET/users-list all the users
+
+GET/users/id-list that particular user
+
+POST/users-create new user
+
+PATCH/users/id-edit the user with particular id
+
+DELETE /users/id-delete the user with particular id
