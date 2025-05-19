@@ -1,11 +1,12 @@
 //we have to make the following requests 
 
-GET/users-list all the users
+GET/users-list all the users html
+GET/api/users-list all users json
 
-GET/users/id-list that particular user
+GET/api/users/:id-list that particular user
 
-POST/users-create new user
+POST/api/users-create new user
 
-PATCH/users/id-edit the user with particular id
+PATCH/api/users/:id-edit the user with particular id
 
-DELETE /users/id-delete the user with particular id
+DELETE /api/users/:id-delete the user with particular id
