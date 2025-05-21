@@ -4,9 +4,20 @@ const PORT=8000;
 const users=require("./MOCK_DATA.json")
 const fs=require('fs');
 //middleware
-app.use(express.urlencoded({extended: false}))
+app.use(express.urlencoded({extended: false}));
+
+app.use((req,res,next)=>{
+    fs.appendFile("./log.txt",`\n${Date.now()}: ${req.ip}: ${req.method}: ${req.path}`,(err,data)=>{
+      next();
+    })
+  
+});
+
+
+
 
 app.get('/api/users',(req,res)=>{
+    console.log(req.myUserName);
     return res.json(users);
 })
 app.get('/users',(req,res)=>{
