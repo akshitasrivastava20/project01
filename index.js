@@ -1,7 +1,7 @@
 const express=require("express");
 const app=express();
 const PORT=8000;
-const users=require("./MOCK_DATA.json")
+
 const fs=require('fs');
 const mongoose=require('mongoose');
 const { type } = require("os");
@@ -54,17 +54,19 @@ app.use((req,res,next)=>{
 
 
 
-app.get('/api/users',(req,res)=>{
-   
-    console.log(req.headers);
-    res.setHeader('X-myName',"Akshuububu");
+app.get('/api/users',async(req,res)=>{
+   const allUsers=await User.find({});
+
+    
+    
     //always add x to custom header
-    return res.json(users);
+    return res.json(allUsers);
 })
-app.get('/users',(req,res)=>{
+app.get('/users',async(req,res)=>{
+    const allUsers=await User.find({});
     const html=`
     <ul>
-    ${users.map((user)=>`<li>${user.first_name}</li>`)}
+    ${allUsers.map((user)=>`<li>${user.firstname}-${user.email}</li>`)}
     </ul>
     `;
     res.send(html);
@@ -72,22 +74,26 @@ app.get('/users',(req,res)=>{
 
 app
 .route('/api/users/:id')
-.get((req,res)=>{
-    const id=Number(req.params.id);
-    const user=users.find(user=>user.id===id)
+.get(async(req,res)=>{
+
+    const user=await User.findById(req.params.id);
+    // const id=Number(req.params.id);
+    // const user=users.find(user=>user.id===id)
     if(!user)return res.status(404).json({error:"user not found"})
     return res.json(user);
 
 })
-.patch((req,res)=>{
+.patch(async(req,res)=>{
     //edit user
+    await User.findByIdAndUpdate(req.params.id,{firstname:"buba"});
 
-    return res.send("pending");
+    return res.send("success");
 
 })
-.delete((req,res)=>{
+.delete(async(req,res)=>{
     //delete user
-    return res.send("pending");
+     await User.findByIdAndDelete(req.params.id);
+    return res.send("success");
 })
 
 
