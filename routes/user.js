@@ -1,6 +1,6 @@
 const express=require("express");
 const router=express.Router();
-const {handlegetallusers,handlegetuserbyid,handleupdateuserbyid,handledeleteuserbyid,handlecreateuser}=require("../controllers")
+const {handlegetallusers,handlegetuserbyid,handleupdateuserbyid,handledeleteuserbyid,handlecreateuser}=require("../controllers/user")
 
 router.get('/',handlegetallusers);
 // router.get('/users',async(req,res)=>{
