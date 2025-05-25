@@ -13,7 +13,9 @@ const {logReqRes}=require("./middlewares")
 
 //connection
 
-connectMongoDb("mongodb://127.0.0.1:27017/youtube-app-1")
+connectMongoDb("mongodb://127.0.0.1:27017/youtube-app-1").then(()=>{
+    console.log("mongodb connected");
+})
 // mongoose
 // .connect('mongodb://127.0.0.1:27017/youtube-app-1')
 // .then(()=>console.log("mongodb connected"))
@@ -33,7 +35,7 @@ app.use(express.urlencoded({extended: false}));
   
 // });
 app.use(logReqRes("log.txt"))
-app.use("/user",userRouter);
+app.use("/api/users",userRouter);
 
 
 

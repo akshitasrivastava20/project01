@@ -51,3 +51,5 @@
 1748020975401: ::1: GET: /api/users/6830a6ddd4dca19e027166d7
 1748021039937: ::1: DELETE: /api/users/6830a6ddd4dca19e027166d7
 1748021046667: ::1: GET: /api/users/6830a6ddd4dca19e027166d7
+1748111837118: ::1: GET: /api/users
+1748112449496: ::1: POST: /api/users
